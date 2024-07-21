@@ -16,10 +16,16 @@
     <p class="card-text">Description: {{description}}</p>
   </div>
   <div class="card-footer">
-    DueDate: {{dueDate | date:'mediumDate' }}
-
-    <button type="button" disabled [ngClass]="status ? 'btn btn-outline-success' : 'btn btn-outline-info'">{{status ?
-      'Completed':'Pending'}}</button>
+    <div class="row">
+      <div class="col-9">
+        DueDate: {{dueDate | date:'mediumDate' }}
+      </div>
+      <div class=" col-2" >
+        <button type="button" disabled [ngClass]="status ? 'btn btn-outline-success' : 'btn btn-outline-info'">{{status
+          ?
+          'Completed':'Pending'}}</button>
+      </div>
+    </div>
   </div>
 </div>
 <div>

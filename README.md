@@ -19,15 +19,15 @@ Developer Guidee:
 Below are the components implemented :
 
 For this project i just used components and didnt use any modularisation.
-Pipes are used to swearch data
-Inbuilt date pipe is used
+**Pipes are used to Search data
+Inbuilt date pipe is used**
 
-Under Utilities folder
+**Under Utilities folder**
 
 HttpInterceptors are used for handling jwt tokens,http error handling
 AuthGuard and role guard for AUthorisation
 
-Services:
+**Services:**
 Auhthentication service is used for Authentication and Authoridation
 TaskList Service is userd to manage todo Tasks
 Modal service to pop up Modal
@@ -46,6 +46,7 @@ Currently there are 2 roles addedd in the system : [Admin,User]
     o Form to input username and password.
     o Button to submit and authenticate.
     
+
 **UnAuthorise Component:** - This component will be triggered by the Authentication Guards with user trying to access unexpected role.
 
 
@@ -84,4 +85,5 @@ Example UI Flow
 2. After logging in, the user is redirected to the to-do list page.
 3. The user can view,edit, or delete to-do items for all users.
 5. The user can log out and return to the login page.
+
 

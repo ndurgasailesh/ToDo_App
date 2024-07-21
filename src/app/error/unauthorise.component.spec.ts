@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ErrorComponent } from './error.component';
+import { UnAuthoriseComponent } from './unauthorise.component';
 
-describe('ErrorComponent', () => {
-  let component: ErrorComponent;
-  let fixture: ComponentFixture<ErrorComponent>;
+describe('UnAuthoriseComponent', () => {
+  let component: UnAuthoriseComponent;
+  let fixture: ComponentFixture<UnAuthoriseComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ErrorComponent ]
+      declarations: [ UnAuthoriseComponent ]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(ErrorComponent);
+    fixture = TestBed.createComponent(UnAuthoriseComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

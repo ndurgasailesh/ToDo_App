@@ -29,7 +29,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AddEditTodoComponent } from './add-edit-todo/add-edit-todo.component';
 import { AllUserToDoComponent } from './all-user-to-do/all-user-to-do.component';
 import { AlertModule } from 'ngx-alerts';
-import { ErrorComponent } from './error/error.component';
+import { UnAuthoriseComponent } from './error/unauthorise.component';
 
 
 @NgModule({
@@ -43,7 +43,7 @@ import { ErrorComponent } from './error/error.component';
     SearchTitlePipe,
     AddEditTodoComponent,
     AllUserToDoComponent,
-    ErrorComponent
+    UnAuthoriseComponent
   ],
   imports: [
     BrowserModule,

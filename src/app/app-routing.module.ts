@@ -7,15 +7,10 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { RegisterComponent } from './register/register.component';
 import { AllUserToDoComponent } from './all-user-to-do/all-user-to-do.component';
 import { RoleGuard } from './utilities/role.guard';
-import { ErrorComponent } from './error/error.component';
+import { UnAuthoriseComponent } from './error/unauthorise.component';
 
 
 const routes: Routes = [
-    // {
-    //     path: '',
-    //     component: HomeComponent,
-    //     canActivate: [AuthGuard]
-    // },
     {
         path: 'register',
         component: RegisterComponent
@@ -38,10 +33,10 @@ const routes: Routes = [
     },
     {
         path: 'unauthorised',
-        component: ErrorComponent 
+        component: UnAuthoriseComponent 
     },
     // otherwise redirect to home
-    { path: '**', redirectTo: '' }
+    { path: '**', redirectTo: 'unauthorised' }
 ];
 
 @NgModule({

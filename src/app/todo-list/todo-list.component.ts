@@ -139,4 +139,7 @@ export class TodoListComponent implements OnInit {
     this.onCloseModal();
   }
 
+  todoItems(index : number, task: any) {
+    return task ? task.id : undefined;
+};
 }

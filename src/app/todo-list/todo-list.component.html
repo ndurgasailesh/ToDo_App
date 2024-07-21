@@ -30,7 +30,7 @@
   <ng-container>
     <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
       class="example-list" (cdkDropListDropped)="drop($event)">
-      <div class="example-box" *ngFor="let item of todo | searchTitle:searchText" cdkDrag>
+      <div class="example-box" *ngFor="let item of todo | searchTitle:searchText; trackBy:todoItems" cdkDrag>
         <app-todo-item [title]="item.title" [description]="item.description" [dueDate]="item.dueDate"  [status]="item.isCompleted" [id]="item?.id"
        (addTaskList) ="onAddEventNotified($event)" (editTaskList)="onEditEventNotified($event)"
           (deleteTaskList)="onDeleteEventNotified($event)" (refreshDataEvent)="retrieveTaskListsByUserId()"></app-todo-item>

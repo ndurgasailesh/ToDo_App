@@ -85,5 +85,11 @@ export class AllUserToDoComponent implements OnInit {
     this.onCloseModal();
   }
 
+  usrs(index : number, user: any){
+    return user ? user.id : undefined;
+  }
+  userTasklists(index : number, usertask: any){
+    return usertask ? usertask.id : undefined;
+  }
 }
 

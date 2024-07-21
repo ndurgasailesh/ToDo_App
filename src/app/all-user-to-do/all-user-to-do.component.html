@@ -1,0 +1,28 @@
+<div>
+    <modal id="modal-1">
+      <app-add-edit-todo [editMode]="editMode"></app-add-edit-todo>
+    </modal>
+</div>
+<div class="p-2 mt-5 card shadow border-01"  *ngFor="let user of allUserTodoList" >
+    <div class="p-2 col-xl-3 col-sm-6 col-12" style="cursor: pointer;">
+        <div class="card shadow border-0">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col">
+                        <span class="h4 font-semibold text-muted text-sm d-block mb-2 text-primary">{{user.userName}}</span>
+                        <span class="h3 font-bold mb-0"><span class="text-success">{{user?.taskLists?.length}}</span> ToDo Items</span> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+     ------------------------------ToDo Tasks------------------------------
+    <hr>
+<div  *ngFor="let item of user.taskLists | searchTitle:searchText" cdkDrag>
+    <app-todo-item [title]="item.title" [description]="item.description" [dueDate]="item.dueDate" [id]="item?.id"
+   (addTaskList) ="onAddEventNotified($event)" (editTaskList)="onEditEventNotified($event)"
+      (deleteTaskList)="onDeleteEventNotified($event)" (refreshDataEvent)="retrieveTaskListsByUserId()"></app-todo-item>
+  </div> 
+
+</div>

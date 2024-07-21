@@ -1,0 +1,12 @@
+.container {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 0px;
+    margin-right: 0px;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.container-size {
+    min-width: 30rem;
+}

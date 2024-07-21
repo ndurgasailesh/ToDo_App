@@ -1,0 +1,30 @@
+<div class="modal-header">
+    <h5 class="modal-title">{{title}} Task !!</h5>
+    <button type="button" class="btn-close" (click)="modalService.close();"></button>
+</div>
+<div class="modal-body">
+    <div [formGroup]="todoForm" class="row" >
+        <div data-mdb-input-init class="form-outline mb-4">
+            <textarea class="form-control" formControlName="title" placeholder="Enter Title" rows="2"
+                [ngClass]="{ 'is-invalid': submitted && this.form['title'].errors }"></textarea>
+            <div *ngIf="submitted && form['title'].errors" class="invalid-feedback">
+                <div *ngIf="form['title'].errors['required']">Title is required</div>
+            </div>
+        </div>
+        <div data-mdb-input-init class="col-sm-4 form-outline mb-4">
+            <input type="date" formControlName="dueDate" class="form-control" />
+        </div>
+        <div data-mdb-input-init class="form-outline mb-4 col-sm-6">
+            <textarea class="form-control" formControlName="description" placeholder="Enter Description"
+                rows="4"></textarea>
+        </div>
+    </div>
+</div>
+<div class="modal-footer">
+    <button [disabled]="submitting" class="btn btn-primary" (click)="onSubmit()">
+        <span *ngIf="submitting" class="spinner-border spinner-border-sm me-1"></span>
+        Save
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="onCloseModal()">Close</button> 
+</div>
+

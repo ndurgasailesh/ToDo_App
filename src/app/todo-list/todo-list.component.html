@@ -1,0 +1,53 @@
+<div>
+  <modal id="modal-1">
+    <app-add-edit-todo [editMode]="editMode"></app-add-edit-todo>
+  </modal>
+
+</div>
+<div class="container mt-5">
+  <div class=" col-4">
+    <div class="text-center pt-3 pb-2">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp" alt="Check"
+        width="60">
+      <h2 class="my-4" style="color: crimson;">To-Do List</h2>
+    </div>
+  </div>
+  <div class="col-4" style="text-align: center;">
+    <button class="btn btn-outline-info" (click)="modalService.open('modal-1')" (close)="onModalClose()">Add Task...</button>
+    <input class="form-control mt-3" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
+      placeholder=" Start searching for a title">
+
+  </div>
+  <div class=" col-4">
+    <div class="text-center pt-3 pb-2">
+      <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-todo-list/check1.webp" alt="Check"
+        width="60">
+      <h2 class="my-4" style="color: rgb(12, 111, 78);">Completed</h2>
+    </div>
+  </div>
+</div>
+<div class="example-container">
+  <ng-container>
+    <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
+      class="example-list" (cdkDropListDropped)="drop($event)">
+      <div class="example-box" *ngFor="let item of todo | searchTitle:searchText" cdkDrag>
+        <app-todo-item [title]="item.title" [description]="item.description" [dueDate]="item.dueDate" [id]="item?.id"
+       (addTaskList) ="onAddEventNotified($event)" (editTaskList)="onEditEventNotified($event)"
+          (deleteTaskList)="onDeleteEventNotified($event)" (refreshDataEvent)="retrieveTaskListsByUserId()"></app-todo-item>
+      </div> 
+    </div>
+  </ng-container>
+</div>
+<div class="vr"></div>
+
+<div class="example-container">
+
+  <div cdkDropList #doneList="cdkDropList" [cdkDropListData]="done" [cdkDropListConnectedTo]="[todoList]"
+    class="example-list" (cdkDropListDropped)="drop($event)">
+    <div class="example-box" *ngFor="let item of done | searchTitle:searchText" cdkDrag>
+      <span id="completed-tasks">
+        <h3>{{item.title}}</h3>
+      </span>
+    </div>
+  </div>
+</div>

@@ -16,7 +16,7 @@ export class TodoItemComponent {
   @Input() title! : string ;
   @Input() description: string = '';
   @Input() dueDate!: Date; 
-  @Input() status: string = 'Pending';
+  @Input() status: boolean = false;
   @Input() id! : number ;
 
   @Output() editTaskList = new EventEmitter();
@@ -38,7 +38,6 @@ export class TodoItemComponent {
     if(window.confirm('Are sure you want to delete this item ?')){
       this.onDelete();
      }
-    //this.modalService.open('modal-delete');
   }
   onDelete() {
     this.taskListService.delete(this.id)

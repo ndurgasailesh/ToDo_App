@@ -13,7 +13,7 @@
     </div>
   </div>
   <div class="col-4" style="text-align: center;">
-    <button class="btn btn-outline-info" (click)="modalService.open('modal-1')" (close)="onModalClose()">Add Task...</button>
+    <button class="btn btn-outline-info" (click)="onAddClick()" (close)="onModalClose()">Add Task...</button>
     <input class="form-control mt-3" type="text" name="search" [(ngModel)]="searchText" autocomplete="off"
       placeholder=" Start searching for a title">
 
@@ -31,7 +31,7 @@
     <div cdkDropList #todoList="cdkDropList" [cdkDropListData]="todo" [cdkDropListConnectedTo]="[doneList]"
       class="example-list" (cdkDropListDropped)="drop($event)">
       <div class="example-box" *ngFor="let item of todo | searchTitle:searchText" cdkDrag>
-        <app-todo-item [title]="item.title" [description]="item.description" [dueDate]="item.dueDate" [id]="item?.id"
+        <app-todo-item [title]="item.title" [description]="item.description" [dueDate]="item.dueDate"  [status]="item.isCompleted" [id]="item?.id"
        (addTaskList) ="onAddEventNotified($event)" (editTaskList)="onEditEventNotified($event)"
           (deleteTaskList)="onDeleteEventNotified($event)" (refreshDataEvent)="retrieveTaskListsByUserId()"></app-todo-item>
       </div> 
@@ -46,7 +46,10 @@
     class="example-list" (cdkDropListDropped)="drop($event)">
     <div class="example-box" *ngFor="let item of done | searchTitle:searchText" cdkDrag>
       <span id="completed-tasks">
-        <h3>{{item.title}}</h3>
+        <app-todo-item [title]="item.title" [description]="item.description" [dueDate]="item.dueDate"  [status]="item.isCompleted" [id]="item?.id"
+        (addTaskList) ="onAddEventNotified($event)" (editTaskList)="onEditEventNotified($event)"
+           (deleteTaskList)="onDeleteEventNotified($event)" (refreshDataEvent)="retrieveTaskListsByUserId()"></app-todo-item>
+ 
       </span>
     </div>
   </div>

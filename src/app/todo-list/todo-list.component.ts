@@ -5,6 +5,7 @@ import { TaskListService } from '../services/tasklist.service';
 import { CdkDragDrop, moveItemInArray, transferArrayItem } from '@angular/cdk/drag-drop';
 import { TaskList } from '../models/todo';
 import { ToastrService } from 'ngx-toastr';
+import { first } from 'rxjs';
 
 
 @Component({
@@ -52,8 +53,8 @@ export class TodoListComponent implements OnInit {
     this.taskListService.getUserTaskList()
       .subscribe({
         next: (data: any) => {
-          this.todo = data;
-          console.log(this.todo);
+          this.todo = data.filter((x: { isCompleted: any; })=>!x.isCompleted);
+          this.done =  data.filter((x: { isCompleted: any; })=>x.isCompleted);
 
         },
         error: (e) => console.error(e)
@@ -75,11 +76,29 @@ export class TodoListComponent implements OnInit {
 
       const taskList = moveditem as TaskList;
       taskList.isCompleted = !taskList.isCompleted;
-      //this.updateTaskList(taskList);
+      this.updateStatusToComplete(taskList);
+      
       console.log('Recenetly moved Item' + moveditem);
       window.scroll(0, 0);
 
     }
+  }
+
+  updateStatusToComplete(taskList:TaskList){
+    this.taskListService.update(taskList.id,taskList)
+    .pipe(first())
+    .subscribe({
+        next: () => {
+          this.toasterService.success("Task status updated")
+        },
+        error: error => {
+        }
+    });
+  }
+
+  onAddClick(){
+    this.modalService.open('modal-1')
+    this.taskListService.taskAdd();
   }
 
   onEditEventNotified(item: TaskList) {

@@ -21,7 +21,6 @@ export class AddEditTodoComponent {
 
   @Input() editMode:boolean = false;
 
-  //editedTaskListItem:TaskList | undefined;
   deleteTaskId:number = 0;
 
   @Output() addTaskList = new EventEmitter();
@@ -45,6 +44,12 @@ export class AddEditTodoComponent {
     private formBuilder: FormBuilder,
     private taskListService: TaskListService,
   ) {
+    this.taskListService.addTaskList$.subscribe(addTask => {
+        if(addTask){
+            this.id = undefined;
+            this.editMode = false;
+        }
+    });
     this.taskListService.updateTaskList$.subscribe((item:TaskList) => {
       if(item){
         this.todoForm.controls['title'].setValue(item.title); 
@@ -85,14 +90,15 @@ export class AddEditTodoComponent {
     }
     console.log(this.todoForm.value);
     console.info("Form Valid!")
-
+    if(!this.editMode) {
+       this.id = undefined;
+    }
     let taskList:any =  { title: this.form['title'].value, description: this.form['description'].value,dueDate:this.form['dueDate'].value,id:undefined}
 
     this.saveUser()
     .pipe(first())
     .subscribe(res=>{
       this.taskListService.refreshTaskListData();
-      //this.refreshDataEvent.emit(true);
     })
     this.onCloseModal();
 
@@ -112,7 +118,6 @@ export class AddEditTodoComponent {
         error: error => {
         }
     });
-    console.log(this.todoForm.value);
   }
 
   handleEditClick() {

@@ -20,7 +20,8 @@
      ------------------------------ToDo Tasks------------------------------
     <hr>
 <div  *ngFor="let item of user.taskLists | searchTitle:searchText" cdkDrag>
-    <app-todo-item [title]="item.title" [description]="item.description" [dueDate]="item.dueDate" [id]="item?.id"
+    <app-todo-item [title]="item.title" [description]="item.description" [dueDate]="item.dueDate" 
+    [id]="item?.id" [status]="item.isCompleted"
    (addTaskList) ="onAddEventNotified($event)" (editTaskList)="onEditEventNotified($event)"
       (deleteTaskList)="onDeleteEventNotified($event)" (refreshDataEvent)="retrieveTaskListsByUserId()"></app-todo-item>
   </div> 

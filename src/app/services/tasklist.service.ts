@@ -14,6 +14,9 @@ export class TaskListService {
   private updateTaskList = new BehaviorSubject<any>(null);
   public updateTaskList$ = this.updateTaskList.asObservable();
 
+  private addTaskList = new BehaviorSubject<boolean>(false);
+  public addTaskList$ = this.addTaskList.asObservable();
+
   private refreshTaskData = new BehaviorSubject<boolean>(false);
   public refreshTaskData$ = this.refreshTaskData.asObservable();
 
@@ -46,6 +49,10 @@ export class TaskListService {
 
   refreshTaskListData() {
     this.refreshTaskData.next(true);
+  }
+
+  taskAdd() {
+    this.addTaskList.next(true);
   }
 
 }

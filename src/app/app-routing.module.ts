@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AuthGuard } from './utilities/auth.guards';
 import { LoginComponent } from './login/login.component';
-import { TodoComponent } from './todo/todoComponent';
 import { Role } from './models/role';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { RegisterComponent } from './register/register.component';

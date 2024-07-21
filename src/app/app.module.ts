@@ -9,7 +9,6 @@ import { JwtInterceptor } from './utilities/jwt.interceptor';
 import { ErrorInterceptor } from './utilities/error.interceptor';
 import { AppRoutingModule } from './app-routing.module';
 import { CorsRequestInterceptor } from './utilities/cors.interceptor';
-import { TodoComponent } from './todo/todoComponent';
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { CdkStepperModule } from '@angular/cdk/stepper';
 import { CdkTableModule } from '@angular/cdk/table';
@@ -37,7 +36,6 @@ import { ErrorComponent } from './error/error.component';
   declarations: [
     AppComponent,
     LoginComponent,
-    TodoComponent,
     ModalComponent,
     TodoListComponent,
     TodoItemComponent,

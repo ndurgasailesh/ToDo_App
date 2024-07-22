@@ -1,7 +1,11 @@
 # TaskUI - This Application was used to manage Todo Tasks
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.11.
+Download Source code
 
+-run below command in git bash in your preferred location
+
+git clone https://github.com/ndurgasailesh/ToDo_App.git
 
 ## Development server
 Please follow below steps to run this Application:
